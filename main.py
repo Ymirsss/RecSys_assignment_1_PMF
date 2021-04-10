@@ -12,15 +12,11 @@ if __name__ == "__main__":
     file = "data/ml-latest-small/ratings.csv"
     data = getData(file)
     train, test = train_test_split(data, test_size=0.2)
-    # M = len(np.unique(data[:, 0])) #用户数
-    # N = len(np.unique(data[:, 1])) #Item数
     M =int(max(np.amax(train[:, 0]), np.amax(test[:, 0]))) + 1  # 第0列，user总数
     N =int(max(np.amax(train[:, 1]), np.amax(test[:, 1]))) + 1
     print("M: %d, N: %d" % (M,N))
     #PMF
     model = PMF_Model()
-        # model.set_params({"num_feat": 10, "epsilon": 1, "_lambda": 0.1, "momentum": 0.8, "maxepoch": 10, "num_batches": 100,
-        #                 "batch_size": 1000})
     model.train(train,test,M,N,k=10)
 
     #plot

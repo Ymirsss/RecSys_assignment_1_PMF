@@ -1,8 +1,7 @@
-from numpy import *
-import random
+import numpy as np
 import csv
 
-def getData(file='ml-latest-small/ratings.csv'):
+def getData(file):
     li = []
     with open(file, 'rt') as csvfile:
         reader = csv.reader(csvfile)
@@ -11,5 +10,6 @@ def getData(file='ml-latest-small/ratings.csv'):
             # print(row)
             (userid, movieid, rating, ts) = row
             li.append([int(userid), int(movieid),float(rating)])
-    return array(li)
+        data = np.array(li)
+    return data
 

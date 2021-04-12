@@ -16,6 +16,11 @@ main.py——run model、数据集划分、结果可视化
 
 运行结果：
 
+![image](https://user-images.githubusercontent.com/41787457/114390243-94f85800-9bc8-11eb-83a8-d6601961ed97.png)
+
+![image](https://user-images.githubusercontent.com/41787457/114390302-a80b2800-9bc8-11eb-8b8e-8e9e7ff9fd89.png)
+
+
 RMSE变化曲线：
 
 ![image](https://user-images.githubusercontent.com/41787457/114351908-cb6cad80-9b9d-11eb-95c0-856e194254b3.png)

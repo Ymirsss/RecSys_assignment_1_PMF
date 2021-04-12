@@ -43,7 +43,7 @@ class PMF_Model():
           for batch in range(self.max_batch):
             error = 0
             self.lr = 0.9*self.lr
-            print("epoch %d batch %d " % (epoch, batch + 1))
+            # print("epoch %d batch %d " % (epoch, batch + 1))
             batch_data = train[batch*self.batch_size:(batch+1)*self.batch_size]
 
 #以下是mini-batch梯度下降法，实验验证，并不如下面常规sgd方法效果好
@@ -125,17 +125,23 @@ class PMF_Model():
           pre_rmse = train_rmse
 
 
-    def predict(self,user):
+    def predict_items(self,user):
         return  np.dot(self.U[user],self.V.T)
 
+
+
     #评估模型
-    def Metric(self,test,k=10):
+    def Metric(self,test,k=3):
         user_li = np.unique(test[:, 0])
         pred = {}
         for user in user_li:
             if pred.get(user, None) is None:
                 # print(self.predict(int(user)))
-                pred[user] = np.argsort(self.predict(int(user)))[-k:]  # numpy.argsort索引排序
+                pred[user] = np.argsort(self.predict_items(int(user)))[-k:]  # numpy.argsort索引排序
+                print("用户%d的top3推荐如下："% user)
+                for item in pred[user]:
+                    print("Movie:%d,评分:%f"%(int(item),np.dot(self.U[int(user)],self.V[int(item)].T)))
+
 
         hit_k_cnt = {}
         for i in range(test.shape[0]):

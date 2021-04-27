@@ -1,4 +1,5 @@
-# RecSys_assignment_1_PMF_2020223040029_龙欣
+# 推荐系统作业库已更换，请跳转到https://github.com/Ymirsss/RecSys_Assignment
+RecSys_assignment_1_PMF_2020223040029_龙欣
 
 运行：
 python main.py
